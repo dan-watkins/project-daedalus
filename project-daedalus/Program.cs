@@ -1,10 +1,14 @@
-using project_daedalus.Components;
+using projectDaedalus.Models;
+using projectDaedalus.Services;
+using project;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.AddSingleton<MongoDBService)>();
 
 var app = builder.Build();
 
